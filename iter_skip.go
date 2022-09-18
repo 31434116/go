@@ -25,6 +25,17 @@ func (iter *Iterator) ReadBool() (ret bool) {
 		iter.skipFourBytes('a', 'l', 's', 'e')
 		return false
 	}
+	if c == '"' {
+		c = iter.nextToken()
+		if c == '0' {
+			iter.skip()
+			return false
+		}
+		if c = '1' {
+			iter.skip()
+			return true
+		}
+	}
 	iter.ReportError("ReadBool", "expect t or f, but found "+string([]byte{c}))
 	return
 }

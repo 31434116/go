@@ -31,7 +31,7 @@ func (iter *Iterator) ReadBool() (ret bool) {
 			iter.skip()
 			return false
 		}
-		if c = '1' {
+		if c == '1' {
 			iter.skip()
 			return true
 		}
